@@ -8,10 +8,12 @@
   </div>
   <div class="form-group">
     <input placeholder="Nome Completo" class="form-control" formControlName="fullName">
-    <app-mensagem *ngIf="novoUsuarioForm.get('fullName')?.errors && novoUsuarioForm.get('fullName')?.touched " mensagem="Nome incorreto"></app-mensagem>
+    <app-mensagem *ngIf="novoUsuarioForm.get('fullName')?.errors && novoUsuarioForm.get('fullName')?.touched" mensagem="Nome incorreto"></app-mensagem>
   </div>
   <div class="form-group">
     <input placeholder="Usuário" class="form-control" formControlName="userName">
+    <app-mensagem *ngIf="novoUsuarioForm.get('userName')?.errors?.['minusculo']" mensagem="Usuário deve ser em letra minúscula"></app-mensagem>
+    <app-mensagem *ngIf="novoUsuarioForm.get('userName')?.errors?.['required'] && novoUsuarioForm.get('userName')?.touched" mensagem="Usuário incorreto"></app-mensagem>
   </div>
   <div class="form-group">
     <input type="password" placeholder="Senha" class="form-control" formControlName="password">
@@ -20,4 +22,4 @@
   <button class="btn-primary btn-block">Cadastro</button>
 </form>
 
-<p>Já é um usuário? <a [routerLink]="['']">Faça o Login</a>></p>
+<p>Já é um usuário? <a [routerLink]="['']">Faça o Login</a></p>
