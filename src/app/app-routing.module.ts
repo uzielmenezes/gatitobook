@@ -1,3 +1,5 @@
+import { LoginGuard } from './autenticacao/login.guard';
+import { AutenticacaoGuard } from './autenticacao/autenticacao.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -5,20 +7,23 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'home',
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    canLoad: [LoginGuard],
   },
   {
     path: 'animais',
-    loadChildren: () => import('./animais/animais.module').then((m) => m.AnimaisModule)
-  }
+    loadChildren: () =>
+      import('./animais/animais.module').then((m) => m.AnimaisModule),
+    canLoad: [AutenticacaoGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
