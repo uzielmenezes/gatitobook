@@ -1,5 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
-import { MensagemModule } from './../componentes/mensagem/mensagem.module';
+import { SharedModule } from './../shared/shared.module';
 import { CartaoModule } from './../componentes/cartao/cartao.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,12 +18,6 @@ import { ComentariosComponent } from './detalhe-animal/comentarios/comentarios.c
     DetalheAnimalComponent,
     ComentariosComponent,
   ],
-  imports: [
-    CommonModule,
-    AnimaisRoutingModule,
-    CartaoModule,
-    MensagemModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, AnimaisRoutingModule, CartaoModule, SharedModule],
 })
 export class AnimaisModule {}
